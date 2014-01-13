@@ -11,3 +11,9 @@
 *.lai
 *.la
 *.a
+
+#Cmake build directory
+build
+
+#Emacs tmp files
+*~

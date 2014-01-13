@@ -1,0 +1,1 @@
+INSTALL(FILES index.html DESTINATION /opt/julio/content)

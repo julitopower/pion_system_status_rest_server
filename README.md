@@ -1,4 +1,4 @@
-pion_system_status_rest_server
-==============================
+pion_http_server
+================
 
-A Pion based http server, that serves the status of the system (cpu, memory, disk usage, ...) via a REST interface.
+A simple HTTP server built using pion. This is the foundation of a C++ layer to be used in REST web services.
