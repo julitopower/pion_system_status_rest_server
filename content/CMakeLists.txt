@@ -1,1 +1,1 @@
-INSTALL(FILES index.html DESTINATION /opt/julio/content)
+INSTALL(FILES index.html jquery-2.0.3.js DESTINATION /opt/julio/content)
