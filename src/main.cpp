@@ -6,6 +6,8 @@
 #include <pion/http/response.hpp>
 #include <pion/http/response_writer.hpp>
 
+#include <boost/bind.hpp>
+
 #include <cstdio>
 
 static const std::string pageHeader("<html><body>\n");
@@ -20,7 +22,7 @@ void sendFile(const std::string& path, pion::http::response_writer_ptr& respWrit
   int n;
   char buffer[4096];
   while ((n = read(fd, buffer, 4096)) > 0) {
-    std::cout << "Read " << n << " chars" << std::endl;
+    //std::cout << "Read " << n << " chars" << std::endl;
     buffer[n] = 0;
     respWriter->write(buffer);
   }
@@ -41,7 +43,7 @@ void indexRequestHandler(pion::http::request_ptr& req, pion::tcp::connection_ptr
   const std::string& resourcePath = "/opt/julio/content" + req->get_resource();
   //const char* path = (root + req->get_resource()).c_str();
   std::cout << resourcePath << std::endl;
-  pion::http::response_writer_ptr respWriter(pion::http::response_writer::create(conn, *req.get()));
+  pion::http::response_writer_ptr respWriter(pion::http::response_writer::create(conn, *req.get(), boost::bind(&pion::tcp::connection::finish, conn)));
   sendFile(resourcePath, respWriter);
   std::cout << "Finished request for " << resourcePath << std::endl;
   return;
@@ -49,7 +51,7 @@ void indexRequestHandler(pion::http::request_ptr& req, pion::tcp::connection_ptr
 
 void procRequestHandler(pion::http::request_ptr& req, pion::tcp::connection_ptr& conn) {
   const std::string& path = "/proc/meminfo";
-  pion::http::response_writer_ptr respWriter(pion::http::response_writer::create(conn, *req.get()));
+  pion::http::response_writer_ptr respWriter(pion::http::response_writer::create(conn, *req.get(), boost::bind(&pion::tcp::connection::finish, conn)));
   sendFile(path, respWriter);
   return;
 }
