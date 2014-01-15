@@ -1,4 +1,4 @@
-ADD_EXECUTABLE(app main.cpp)
+ADD_EXECUTABLE(app main.cpp TestHandler.cpp)
 TARGET_LINK_LIBRARIES(app ${pion_LIB} ${Boost_LIBRARIES}
   ${OPENSSL_LIBRARIES})
 
