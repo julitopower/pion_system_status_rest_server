@@ -15,5 +15,6 @@ FIND_LIBRARY(pion_LIB NAMES pion HINTS /usr/local/lib /usr/lib)
 
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(content)
+ADD_SUBDIRECTORY(python)
 
 

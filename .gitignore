@@ -17,3 +17,6 @@ build
 
 #Emacs tmp files
 *~
+
+#Python files
+*.pyc

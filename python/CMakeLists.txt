@@ -1,0 +1,1 @@
+INSTALL(FILES server.py requirements.txt DESTINATION /opt/julio/)
